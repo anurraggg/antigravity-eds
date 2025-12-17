@@ -116,37 +116,32 @@
 .carousel-nav button {
   pointer-events: auto;
   width: 56px;
-  /* Slightly larger */
   height: 56px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  /* More subtle background */
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: var(--link-color);
+  /* Red background */
+  border: 2px solid white;
+  /* White border */
   cursor: pointer;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-  /* Glassmorphism effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-nav button:hover {
-  background: rgba(255, 255, 255, 1);
-  border-color: white;
+  background: var(--link-hover-color);
+  /* Darker red on hover */
   transform: scale(1.1);
-  /* Slight zoom on hover */
-}
-
-.carousel-nav button:hover .icon {
-  background-color: var(--link-color);
 }
 
 .carousel-nav .icon {
   width: 28px;
   height: 28px;
   background-color: white;
+  /* White icon */
   mask-size: contain;
   -webkit-mask-size: contain;
   mask-repeat: no-repeat;
@@ -181,6 +176,7 @@
   height: 12px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
+  /* Inactive dot */
   border: none;
   padding: 0;
   cursor: pointer;
@@ -188,12 +184,13 @@
 }
 
 .carousel-dots button.carousel-dot-active {
-  background: white;
+  background: var(--link-color);
+  /* Active dot is Red */
   transform: scale(1.2);
 }
 
 .carousel-dots button:hover {
-  background: white;
+  background: var(--link-color);
 }
 
 @media (width >=900px) {

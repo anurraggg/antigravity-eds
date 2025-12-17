@@ -262,8 +262,10 @@ main>.section>div {
   padding: 0 24px;
 }
 
+/* Remove margin for the first section to sit flush with header */
 main>.section:first-of-type {
   margin-top: 0;
+  padding-top: 0;
 }
 
 @media (width >=900px) {
