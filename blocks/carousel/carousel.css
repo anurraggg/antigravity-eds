@@ -16,24 +16,32 @@
 .carousel-slide-image picture img {
   width: 100%;
   height: 600px;
-  /* Adjust as needed */
   object-fit: cover;
   display: block;
 }
 
 .carousel-slide-content {
   position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
+  bottom: 80px;
+  /* Positioned at bottom */
+  left: 80px;
+  /* Positioned at left */
   color: white;
   background: transparent;
-  /* Removed background box to match Aashirvaad */
   padding: 0;
   max-width: 600px;
   font-family: var(--body-font-family);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  /* Added text shadow for readability */
+  z-index: 2;
+}
+
+/* Logo in content */
+.carousel-slide-content picture img {
+  width: auto;
+  height: auto;
+  max-height: 80px;
+  /* Limit logo height */
+  margin-bottom: 20px;
+  display: block;
 }
 
 .carousel-slide-content h2,
@@ -41,12 +49,12 @@
 .carousel-slide-content strong {
   font-family: var(--heading-font-family);
   font-size: 56px;
-  /* Increased size */
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   display: block;
   line-height: 1.1;
   color: #fff6e1;
   font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-slide-content p {
@@ -54,20 +62,23 @@
   margin-bottom: 32px;
   line-height: 1.5;
   color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-slide-content .button {
   background-color: var(--link-color);
   color: white;
   padding: 14px 36px;
-  border-radius: 4px;
-  /* Less rounded */
+  border-radius: 30px;
+  /* Rounded pill shape */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   border: none;
   transition: background-color 0.3s;
   font-size: 16px;
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .carousel-slide-content .button:hover {
@@ -84,45 +95,67 @@
   display: flex;
   justify-content: space-between;
   pointer-events: none;
-  /* Allow clicking through container */
   padding: 0 40px;
   box-sizing: border-box;
+  z-index: 10;
 }
 
 .carousel-nav button {
   pointer-events: auto;
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid white;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.7);
   cursor: pointer;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .carousel-nav button:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: white;
+  border-color: white;
+}
+
+.carousel-nav button:hover .icon {
+  background-color: var(--link-color);
+  /* Icon turns red on hover */
 }
 
 .carousel-nav .icon {
   width: 24px;
   height: 24px;
   background-color: white;
-  /* Icon color */
   mask-size: contain;
   -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
 }
 
 .carousel-nav .icon-arrow-left {
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 18l-6-6 6-6'/%3E%3C/svg%3E");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 18l-6-6 6-6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 .carousel-nav .icon-arrow-right {
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E");
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+@media (width >=900px) {
+  .carousel-slide-image picture img {
+    height: 600px;
+    /* Or auto/100vh depending on design */
+  }
+
+  .carousel-slide-content {
+    bottom: 100px;
+    left: 113px;
+    /* Matches Aashirvaad padding */
+  }
 }

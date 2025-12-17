@@ -2,16 +2,15 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   const rows = [...block.children];
-  [...block.children].forEach((row, r) => {
+  rows.forEach((row, r) => {
     if (r === 0) row.classList.add('carousel-slide-active');
     row.classList.add('carousel-slide');
-    [...row.children].forEach((col, c) => {
-      if (col.querySelector('picture')) {
-        col.classList.add('carousel-slide-image');
-      } else {
-        col.classList.add('carousel-slide-content');
-      }
-    });
+
+    const children = [...row.children];
+    // First column is always the background image
+    if (children[0]) children[0].classList.add('carousel-slide-image');
+    // Second column is the content (Logo + Text + Button)
+    if (children[1]) children[1].classList.add('carousel-slide-content');
   });
 
   // Add navigation arrows if more than one slide
