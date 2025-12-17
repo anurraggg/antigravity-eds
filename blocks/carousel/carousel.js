@@ -6,11 +6,18 @@ export default function decorate(block) {
     if (r === 0) row.classList.add('carousel-slide-active');
     row.classList.add('carousel-slide');
 
-    const children = [...row.children];
-    // First column is always the background image
-    if (children[0]) children[0].classList.add('carousel-slide-image');
-    // Second column is the content (Logo + Text + Button)
-    if (children[1]) children[1].classList.add('carousel-slide-content');
+    // Find the image and content
+    const columns = [...row.children];
+    const imageCol = columns.find(col => col.querySelector('picture'));
+    const contentCol = columns.find(col => col !== imageCol);
+
+    if (imageCol) {
+      imageCol.classList.add('carousel-slide-image');
+    }
+
+    if (contentCol) {
+      contentCol.classList.add('carousel-slide-content');
+    }
   });
 
   // Add navigation arrows if more than one slide
