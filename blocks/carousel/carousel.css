@@ -79,7 +79,8 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.carousel-slide-content .button {
+/* Style ANY link in the content as a button */
+.carousel-slide-content a:any-link {
   background-color: var(--link-color);
   color: white;
   padding: 14px 36px;
@@ -92,9 +93,10 @@
   font-size: 16px;
   display: inline-block;
   margin-top: 10px;
+  text-decoration: none;
 }
 
-.carousel-slide-content .button:hover {
+.carousel-slide-content a:hover {
   background-color: var(--link-hover-color);
   text-decoration: none;
 }
