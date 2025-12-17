@@ -18,6 +18,7 @@
   height: 600px;
   /* Adjust as needed */
   object-fit: cover;
+  display: block;
 }
 
 .carousel-slide-content {
@@ -26,43 +27,47 @@
   left: 10%;
   transform: translateY(-50%);
   color: white;
-  background: rgba(0, 0, 0, 0.4);
-  /* Semi-transparent overlay */
-  padding: 30px;
-  border-radius: 4px;
-  max-width: 500px;
+  background: transparent;
+  /* Removed background box to match Aashirvaad */
+  padding: 0;
+  max-width: 600px;
   font-family: var(--body-font-family);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  /* Added text shadow for readability */
 }
 
 .carousel-slide-content h2,
 .carousel-slide-content h3,
 .carousel-slide-content strong {
   font-family: var(--heading-font-family);
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 56px;
+  /* Increased size */
+  margin-bottom: 24px;
   display: block;
-  line-height: 1.2;
+  line-height: 1.1;
   color: #fff6e1;
-  /* Off-white text */
+  font-weight: 700;
 }
 
 .carousel-slide-content p {
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: 20px;
+  margin-bottom: 32px;
   line-height: 1.5;
+  color: white;
 }
 
 .carousel-slide-content .button {
   background-color: var(--link-color);
-  /* Aashirvaad Red */
   color: white;
-  padding: 12px 30px;
-  border-radius: 30px;
+  padding: 14px 36px;
+  border-radius: 4px;
+  /* Less rounded */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   border: none;
   transition: background-color 0.3s;
+  font-size: 16px;
 }
 
 .carousel-slide-content .button:hover {
@@ -70,26 +75,54 @@
   text-decoration: none;
 }
 
+/* Navigation Arrows */
 .carousel-nav {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  pointer-events: none;
+  /* Allow clicking through container */
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .carousel-nav button {
-  width: 12px;
-  height: 12px;
+  pointer-events: auto;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
   cursor: pointer;
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
 }
 
-.carousel-nav button:hover,
-.carousel-nav button:focus {
-  background: white;
+.carousel-nav button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-nav .icon {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  /* Icon color */
+  mask-size: contain;
+  -webkit-mask-size: contain;
+}
+
+.carousel-nav .icon-arrow-left {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 18l-6-6 6-6'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 18l-6-6 6-6'/%3E%3C/svg%3E");
+}
+
+.carousel-nav .icon-arrow-right {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E");
 }
