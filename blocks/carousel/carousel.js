@@ -2,9 +2,23 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   const rows = [...block.children];
+
+  // Create pagination dots container
+  const dots = document.createElement('div');
+  dots.classList.add('carousel-dots');
+
   rows.forEach((row, r) => {
     if (r === 0) row.classList.add('carousel-slide-active');
     row.classList.add('carousel-slide');
+
+    // Create a dot for each slide
+    const dot = document.createElement('button');
+    dot.ariaLabel = `Slide ${r + 1}`;
+    if (r === 0) dot.classList.add('carousel-dot-active');
+    dot.addEventListener('click', () => {
+      showSlide(block, r);
+    });
+    dots.append(dot);
 
     // Find the image and content
     const columns = [...row.children];
@@ -31,12 +45,9 @@ export default function decorate(block) {
     prevBtn.innerHTML = '<span class="icon icon-arrow-left"></span>';
     prevBtn.addEventListener('click', () => {
       const current = block.querySelector('.carousel-slide-active');
-      let prev = current.previousElementSibling;
-      if (!prev || !prev.classList.contains('carousel-slide')) {
-        prev = rows[rows.length - 1];
-      }
-      current.classList.remove('carousel-slide-active');
-      prev.classList.add('carousel-slide-active');
+      const currentIndex = rows.indexOf(current);
+      const prevIndex = (currentIndex - 1 + rows.length) % rows.length;
+      showSlide(block, prevIndex);
     });
 
     const nextBtn = document.createElement('button');
@@ -45,16 +56,35 @@ export default function decorate(block) {
     nextBtn.innerHTML = '<span class="icon icon-arrow-right"></span>';
     nextBtn.addEventListener('click', () => {
       const current = block.querySelector('.carousel-slide-active');
-      let next = current.nextElementSibling;
-      if (!next || !next.classList.contains('carousel-slide')) {
-        next = rows[0];
-      }
-      current.classList.remove('carousel-slide-active');
-      next.classList.add('carousel-slide-active');
+      const currentIndex = rows.indexOf(current);
+      const nextIndex = (currentIndex + 1) % rows.length;
+      showSlide(block, nextIndex);
     });
 
     nav.append(prevBtn);
     nav.append(nextBtn);
     block.append(nav);
+    block.append(dots); // Append dots to block
   }
+}
+
+function showSlide(block, index) {
+  const slides = [...block.querySelectorAll('.carousel-slide')];
+  const dots = [...block.querySelectorAll('.carousel-dots button')];
+
+  slides.forEach((slide, i) => {
+    if (i === index) {
+      slide.classList.add('carousel-slide-active');
+    } else {
+      slide.classList.remove('carousel-slide-active');
+    }
+  });
+
+  dots.forEach((dot, i) => {
+    if (i === index) {
+      dot.classList.add('carousel-dot-active');
+    } else {
+      dot.classList.remove('carousel-dot-active');
+    }
+  });
 }

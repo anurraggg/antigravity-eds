@@ -1,0 +1,10 @@
+<div class="carousel">
+          <div>
+            <div>
+              <picture>
+                <source type="image/webp" srcset="./media_1eac3721470ee419c2409dc2c55767c1c7a0276a0.png?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_1eac3721470ee419c2409dc2c55767c1c7a0276a0.png?width=750&#x26;format=webply&#x26;optimize=medium">
+                <source type="image/png" srcset="./media_1eac3721470ee419c2409dc2c55767c1c7a0276a0.png?width=2000&#x26;format=png&#x26;optimize=medium" media="(min-width: 600px)">
+                <img loading="lazy" alt="" src="./media_1eac3721470ee419c2409dc2c55767c1c7a0276a0.png?width=750&#x26;format=png&#x26;optimize=medium" width="1366" height="640">
+              </picture>
+            </div>

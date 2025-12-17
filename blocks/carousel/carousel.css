@@ -1,16 +1,32 @@
 .carousel {
   position: relative;
   overflow: hidden;
+  min-height: 600px;
+  /* Ensure container has height */
 }
 
 .carousel-slide {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  position: relative;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  /* Smooth fade transition */
+  z-index: 1;
 }
 
 .carousel-slide-active {
-  display: block;
+  opacity: 1;
+  z-index: 2;
+  position: relative;
+  /* Keep relative to maintain container height */
+}
+
+/* Ensure subsequent slides are absolute to stack on top/behind */
+.carousel-slide:not(.carousel-slide-active) {
+  position: absolute;
 }
 
 .carousel-slide-image picture img {
@@ -22,16 +38,15 @@
 
 .carousel-slide-content {
   position: absolute;
-  bottom: 80px;
-  /* Positioned at bottom */
+  bottom: 120px;
+  /* Moved up from 80px */
   left: 80px;
-  /* Positioned at left */
   color: white;
   background: transparent;
   padding: 0;
   max-width: 600px;
   font-family: var(--body-font-family);
-  z-index: 2;
+  z-index: 3;
 }
 
 /* Logo in content */
@@ -39,8 +54,7 @@
   width: auto;
   height: auto;
   max-height: 80px;
-  /* Limit logo height */
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   display: block;
 }
 
@@ -70,7 +84,6 @@
   color: white;
   padding: 14px 36px;
   border-radius: 30px;
-  /* Rounded pill shape */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -102,32 +115,37 @@
 
 .carousel-nav button {
   pointer-events: auto;
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  /* Slightly larger */
+  height: 56px;
   border-radius: 50%;
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+  /* More subtle background */
+  border: 1px solid rgba(255, 255, 255, 0.5);
   cursor: pointer;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  /* Glassmorphism effect */
 }
 
 .carousel-nav button:hover {
-  background: white;
+  background: rgba(255, 255, 255, 1);
   border-color: white;
+  transform: scale(1.1);
+  /* Slight zoom on hover */
 }
 
 .carousel-nav button:hover .icon {
   background-color: var(--link-color);
-  /* Icon turns red on hover */
 }
 
 .carousel-nav .icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   background-color: white;
   mask-size: contain;
   -webkit-mask-size: contain;
@@ -147,15 +165,45 @@
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
+/* Pagination Dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.carousel-dots button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dots button.carousel-dot-active {
+  background: white;
+  transform: scale(1.2);
+}
+
+.carousel-dots button:hover {
+  background: white;
+}
+
 @media (width >=900px) {
   .carousel-slide-image picture img {
     height: 600px;
-    /* Or auto/100vh depending on design */
   }
 
   .carousel-slide-content {
-    bottom: 100px;
+    bottom: 140px;
+    /* Moved up further for desktop */
     left: 113px;
-    /* Matches Aashirvaad padding */
   }
 }
