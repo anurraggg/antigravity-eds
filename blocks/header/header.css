@@ -1,6 +1,6 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: var(--header-bg-color);
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -14,10 +14,14 @@ header nav {
   align-items: center;
   gap: 0 24px;
   margin: auto;
-  max-width: 1248px;
-  height: var(--nav-height);
-  padding: 0 24px;
+  max-width: 1440px;
+  /* Wider max-width */
+  height: auto;
+  /* Allow height to grow */
+  min-height: var(--nav-height);
+  padding: 16px 24px;
   font-family: var(--body-font-family);
+  color: var(--header-text-color);
 }
 
 header nav[aria-expanded='true'] {
@@ -53,7 +57,7 @@ header nav p {
 }
 
 header nav a:any-link {
-  color: currentcolor;
+  color: var(--header-text-color);
 }
 
 /* hamburger */
@@ -140,15 +144,15 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 /* brand */
 header .nav-brand {
   grid-area: brand;
-  flex-basis: 128px;
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
-  line-height: 1;
+  flex-basis: auto;
+  min-width: 150px;
+  max-width: 200px;
 }
 
 header nav .nav-brand img {
-  width: 128px;
+  width: 100%;
   height: auto;
+  max-height: 50px;
 }
 
 /* sections */
@@ -172,7 +176,11 @@ header nav .nav-sections ul {
 }
 
 header nav .nav-sections ul>li {
-  font-weight: 500;
+  font-weight: 700;
+  text-transform: none;
+  font-size: 16px;
+  letter-spacing: normal;
+  color: var(--header-text-color);
 }
 
 header nav .nav-sections ul>li>ul {
@@ -276,31 +284,8 @@ header nav .nav-tools .icon-search {
   display: inline-block;
   width: 24px;
   height: 24px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff6e1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-}
-
-/* Adjust brand for wide logo */
-header .nav-brand {
-  grid-area: brand;
-  flex-basis: auto;
-  min-width: 150px;
-  max-width: 200px;
-}
-
-header nav .nav-brand img {
-  width: 100%;
-  height: auto;
-  max-height: 50px;
-  /* Limit height */
-}
-
-/* Nav links styling */
-header nav .nav-sections ul>li {
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 0.5px;
 }

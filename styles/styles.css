@@ -16,15 +16,17 @@
   --light-color: #f9f9f9;
   --dark-color: #333;
   --text-color: #333;
-  --link-color: #5d8e43;
-  /* Aashirvaad Green */
-  --link-hover-color: #4a7235;
+  --link-color: #da001c;
+  /* Aashirvaad Red */
+  --link-hover-color: #b00017;
   --accent-color: #f5a623;
   /* Gold/Orange */
+  --header-bg-color: #da001c;
+  --header-text-color: #fff6e1;
 
   /* fonts */
-  --body-font-family: 'Roboto', sans-serif;
-  --heading-font-family: 'Roboto Condensed', sans-serif;
+  --body-font-family: 'Libre Baskerville', 'Times New Roman', serif;
+  --heading-font-family: 'Libre Baskerville', 'Times New Roman', serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
